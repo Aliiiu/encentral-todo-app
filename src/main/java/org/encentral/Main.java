@@ -55,7 +55,8 @@ public class Main {
                             System.out.println("5. Delete Todo");
                             System.out.println("6. Update Todo Status");
                             System.out.println("7. Search Todos");
-                            System.out.println("8. Update Password");
+                            System.out.println("8. Search Todos By Number of days");
+                            System.out.println("9. Update Password");
                             System.out.println("0. Logout");
                             System.out.print("Enter your choice: ");
                             int userChoice = scanner.nextInt();
@@ -72,23 +73,35 @@ public class Main {
                                 case 2:
                                     Collection<Todo> allTodos = todoApp.getAllTodos(loggedInUser);
                                     System.out.println("All Todos:");
-                                    for (Todo todo : allTodos) {
-                                        System.out.println(todo.getTitle() + " - " + todo.getDetails()
-                                                + " (" + (todo.isCompleted() ? "Completed" : "Active") + ")");
+                                    if (allTodos.size() > 0){
+                                        for (Todo todo : allTodos) {
+                                            System.out.println(todo.getTitle() + " - " + todo.getDetails()
+                                                    + " (" + (todo.isCompleted() ? "Completed" : "Active") + ")");
+                                        }
+                                    } else {
+                                        System.out.println("\nNothing found");
                                     }
                                     break;
                                 case 3:
                                     Collection<Todo> activeTodos = todoApp.getActiveTodos(loggedInUser);
                                     System.out.println("Active Todos:");
-                                    for (Todo todo : activeTodos) {
-                                        System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                    if (activeTodos.size() > 0){
+                                        for (Todo todo : activeTodos) {
+                                            System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                        }
+                                    } else {
+                                        System.out.println("\nNothing found");
                                     }
                                     break;
                                 case 4:
                                     Collection<Todo> completedTodos = todoApp.getCompletedTodos(loggedInUser);
                                     System.out.println("Completed Todos:");
-                                    for (Todo todo : completedTodos) {
-                                        System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                    if (completedTodos.size() > 0){
+                                        for (Todo todo : completedTodos) {
+                                            System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                        }
+                                    } else {
+                                        System.out.println("\nNothing found");
                                     }
                                     break;
                                 case 5:
@@ -109,11 +122,29 @@ public class Main {
                                     String searchTerm = scanner.nextLine();
                                     Collection<Todo> searchResults = todoApp.searchTodos(loggedInUser, searchTerm);
                                     System.out.println("Search Results:");
-                                    for (Todo todo : searchResults) {
-                                        System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                    if (searchResults.size() > 0){
+                                        for (Todo todo : searchResults) {
+                                            System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                        }
+                                    } else {
+                                        System.out.println("\nNothing found");
                                     }
+
                                     break;
                                 case 8:
+                                    System.out.print("Enter number of days: ");
+                                    int numberOfDays = scanner.nextInt();
+                                    Collection<Todo> searchResult = todoApp.searchTodosByDays(loggedInUser, numberOfDays);
+                                    System.out.println("Search Results:");
+                                    if (searchResult.size() > 0){
+                                        for (Todo todo : searchResult) {
+                                            System.out.println(todo.getTitle() + " - " + todo.getDetails());
+                                        }
+                                    } else {
+                                        System.out.println("\nNothing found");
+                                    }
+                                    break;
+                                case 9:
                                     System.out.print("Enter new password: ");
                                     String newPassword = scanner.nextLine();
                                     todoApp.updateUserPassword(loggedInUser, newPassword);

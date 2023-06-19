@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.encentral.model.Todo;
 import org.encentral.model.User;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class TodoApp {
@@ -105,6 +106,17 @@ public class TodoApp {
             public boolean evaluate(Todo todo) {
                 return todo.getTitle().contains(searchTerm)
                         || todo.getDetails().contains(searchTerm);
+            }
+        });
+    }
+
+    public Collection<Todo> searchTodosByDays(User user, int numberOfDays){
+        LocalDateTime daysAgo = LocalDateTime.now().minusDays(numberOfDays);
+
+        return CollectionUtils.select(todos.get(user.getEmail()), new Predicate<Todo>() {
+            @Override
+            public boolean evaluate(Todo todo) {
+                return todo.getDateCreated().isAfter(daysAgo);
             }
         });
     }

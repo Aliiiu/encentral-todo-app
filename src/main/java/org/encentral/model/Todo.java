@@ -1,5 +1,6 @@
 package org.encentral.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
 
@@ -8,13 +9,13 @@ public class Todo {
     private String details;
     private boolean completed;
 
-    private Date dateCreated;
+    private LocalDateTime dateCreated;
 
     public Todo(String title, String details) {
         this.title = title;
         this.details = details;
         this.completed = false;
-        this.dateCreated = new Date();
+        this.dateCreated = LocalDateTime.now();
     }
 
     public String getTitle() {
@@ -33,11 +34,11 @@ public class Todo {
         this.details = details;
     }
 
-    public Date getDateCreated() {
+    public LocalDateTime getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
     }
 
