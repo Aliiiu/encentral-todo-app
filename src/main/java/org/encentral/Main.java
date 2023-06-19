@@ -79,7 +79,7 @@ public class Main {
                                                     + " (" + (todo.isCompleted() ? "Completed" : "Active") + ")");
                                         }
                                     } else {
-                                        System.out.println("\nNothing found");
+                                        System.out.println("Nothing found\n");
                                     }
                                     break;
                                 case 3:
@@ -90,7 +90,7 @@ public class Main {
                                             System.out.println(todo.getTitle() + " - " + todo.getDetails());
                                         }
                                     } else {
-                                        System.out.println("\nNothing found");
+                                        System.out.println("Nothing found\n");
                                     }
                                     break;
                                 case 4:
@@ -101,7 +101,7 @@ public class Main {
                                             System.out.println(todo.getTitle() + " - " + todo.getDetails());
                                         }
                                     } else {
-                                        System.out.println("\nNothing found");
+                                        System.out.println("Nothing found\n");
                                     }
                                     break;
                                 case 5:
@@ -127,7 +127,7 @@ public class Main {
                                             System.out.println(todo.getTitle() + " - " + todo.getDetails());
                                         }
                                     } else {
-                                        System.out.println("\nNothing found");
+                                        System.out.println("Nothing found\n");
                                     }
 
                                     break;
@@ -141,7 +141,7 @@ public class Main {
                                             System.out.println(todo.getTitle() + " - " + todo.getDetails());
                                         }
                                     } else {
-                                        System.out.println("\nNothing found");
+                                        System.out.println("Nothing found\n");
                                     }
                                     break;
                                 case 9:
